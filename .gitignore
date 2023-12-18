@@ -1,0 +1,8 @@
+*.exe
+*.ini
+*.py
+*.spec
+__pycache__
+py_venv/
+build/
+dist/
