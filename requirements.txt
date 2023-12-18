@@ -1,3 +1,2 @@
-numpy
 pyinstaller
 pyside6
