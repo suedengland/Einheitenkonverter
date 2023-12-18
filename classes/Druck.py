@@ -9,6 +9,9 @@ class Druck():
     _hPa: float = None
     _kPa: float = None
     _MPa: float = None
+    _psi: float = None
+
+    decimals = 2
 
     @property
     def bar(self):
@@ -21,7 +24,8 @@ class Druck():
         self._hPa = self._Pa/100
         self._kPa = self._Pa/1000
         self._MPa = self._Pa/1e6
-    @value_formatter
+        self._psi = self._Pa/6895
+    @value_formatter(decimals=decimals)
     def bar_formatted(self):
         return self._bar
 
@@ -36,7 +40,8 @@ class Druck():
         self._hPa = self._Pa/100
         self._kPa = self._Pa/1000
         self._MPa = self._Pa/1e6
-    @value_formatter
+        self._psi = self._Pa/6895
+    @value_formatter(decimals=decimals)
     def mbar_formatted(self):
         return self._mbar
 
@@ -51,7 +56,8 @@ class Druck():
         self._MPa = self._Pa/1e6
         self._bar = self._Pa/1e5
         self._mbar = self._bar*1000
-    @value_formatter
+        self._psi = self._Pa/6895
+    @value_formatter(decimals=decimals)
     def Pa_formatted(self):
         return self._Pa
 
@@ -66,7 +72,8 @@ class Druck():
         self._MPa = self._Pa/1e6
         self._bar = self._Pa/1e5
         self._mbar = self._bar*1000
-    @value_formatter
+        self._psi = self._Pa/6895
+    @value_formatter(decimals=decimals)
     def hPa_formatted(self):
         return self._hPa
 
@@ -81,7 +88,8 @@ class Druck():
         self._MPa = self._Pa/1e6
         self._bar = self._Pa/1e5
         self._mbar = self._bar*1000
-    @value_formatter
+        self._psi = self._Pa/6895
+    @value_formatter(decimals=decimals)
     def kPa_formatted(self):
         return self._kPa
 
@@ -96,9 +104,26 @@ class Druck():
         self._kPa = self._Pa/1000
         self._bar = self._Pa/1e5
         self._mbar = self._bar*1000
-    @value_formatter
+        self._psi = self._Pa/6895
+    @value_formatter(decimals=decimals)
     def MPa_formatted(self):
         return self._MPa
 
+    @property
+    def psi(self):
+        return self._psi
+    @psi.setter
+    def psi(self, val):
+        self._psi = val
+        self._Pa = self._psi*6895
+        self._hPa = self._Pa/100
+        self._kPa = self._Pa/1000
+        self._MPa = self._Pa/1e6
+        self._bar = self._Pa/1e5
+        self._mbar = self._bar*1000
+    @value_formatter(decimals=decimals)
+    def psi_formatted(self):
+        return self._psi
+
     def get_dict(self):
-        return {'bar': self._bar, 'mbar': self._mbar, 'Pa': self._Pa, 'hPa': self._hPa, 'kPa': self._kPa, 'MPa': self._MPa}
+        return {'bar': self._bar, 'mbar': self._mbar, 'Pa': self._Pa, 'hPa': self._hPa, 'kPa': self._kPa, 'MPa': self._MPa, 'psi': self._psi}
