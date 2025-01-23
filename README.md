@@ -41,7 +41,10 @@ pyside6-uic [...].ui -o [...].py
 ```
 
 
-## App laufen lassen
+## App starten
+Unter Linux kann die App mittels `make` gestartet werden. Dabei wird, je nach Befarf, die .ui-Datei konvertiert,
+sollte diese älter sein, als die zugehörige .py-Datei.
+
 Die App kann entweder mit python aus der Kommandozeile (venv aktivieren!) heraus gestartet werden
 ```
 (.\py_venv\Scripts\Activate.ps1)
